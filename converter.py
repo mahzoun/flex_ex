@@ -41,7 +41,7 @@ dict = {'ا':'a',
         '^':'',
         'u':'u',
         '@':'a',
-        'a':'aa',
+        'a':'a',
         'i':'i',
         'e':'e',
         'o':'o',
@@ -54,20 +54,36 @@ def convert(s):
     for row in ws.rows:
         if row[1].value == s:
              s = row[0].value
-             print s
     for byte in s:
         if(byte.encode('utf-8', errors='ignore') != ' '):
             try:
-                fing+= dict[byte.encode('utf-8', errors='ignore')]
+                fing += dict[byte.encode('utf-8', errors='ignore')]
             except:
-                fing+= byte.encode('utf-8', errors='ignore')
+                fing += byte.encode('utf-8', errors='ignore')
     return fing
 
 normalizer = Normalizer()
-persian_file = open('persian.txt','r')
-finglish_file = open('finglish.txt','w')
-for line in persian_file.readlines():
+
+def find(word):
+    for line in story_file.readline():
+        normalizer.normalize(line.decode('utf-8', errors='ignore'))
+        for wordtmp in line.split():
+            if word == wordtmp:
+                print word
+                return 1
+    return 0
+
+persian_file = open('persian.txt', 'r')
+finglish_file = open('finglishbkp.txt', 'w')
+story_file = open('Story.txt', 'r')
+for line in story_file.readlines():
     normalizer.normalize(line.decode('utf-8', errors='ignore'))
     for word in word_tokenize(line.decode('utf-8', errors='ignore')):
-        finglish_file.write(convert(word).encode('utf-8', errors='ignore'))
-        finglish_file.write(' '.encode('utf-8', errors='ignore'))
+        try:
+            finglish_file.write(convert(word).encode('utf-8', errors='ignore'))
+            finglish_file.write(' '.encode('utf-8', errors='ignore'))
+        except:
+            print word
+    finglish_file.write('\n')
+
+
