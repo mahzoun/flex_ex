@@ -9,8 +9,6 @@
 
 %%
 [ \t\n]+
-ma {yylval.v_pp = strdup(yytext); return V_PP; }
-zad {yylval.pro = strdup(yytext); return PRO; }
 aabadani  { yylval.n_sing = strdup(yytext); return N_SING; }
 aabaki  { yylval.adj = strdup(yytext); return ADJ; }
 aabestan  { yylval.adj = strdup(yytext); return ADJ; }
@@ -136,6 +134,7 @@ bakhshi  { yylval.n_sing = strdup(yytext); return N_SING; }
 bakhsh  { yylval.n_sing = strdup(yytext); return N_SING; }
 baland  { yylval.adj = strdup(yytext); return ADJ; }
 bala  { yylval.adv_loc = strdup(yytext); return ADV_LOC; }
+bale  { yylval.int = strdup(yytext); return INT; }
 balke  { yylval.con = strdup(yytext); return CON; }
 balshhay  { yylval.n_pl = strdup(yytext); return N_PL; }
 bam  { yylval.n_sing = strdup(yytext); return N_SING; }
@@ -332,6 +331,7 @@ darym  { yylval.v_aux = strdup(yytext); return V_AUX; }
 darym  { yylval.v_prs = strdup(yytext); return V_PRS; }
 dar  { yylval.n_sing = strdup(yytext); return N_SING; }
 dar  { yylval.pi = strdup(yytext); return pi; }
+dar  { yylval.prev = strdup(yytext); return PREV; }
 dary  { yylval.v_prs = strdup(yytext); return V_PRS; }
 dashtnd  { yylval.v_pa = strdup(yytext); return V_PA; }
 dhansh  { yylval.n_sing = strdup(yytext); return N_SING; }
@@ -395,6 +395,7 @@ kardi  { yylval.v_pa = strdup(yytext); return V_PA; }
 kard  { yylval.n_sing = strdup(yytext); return N_SING; }
 kard  { yylval.v_pa = strdup(yytext); return V_PA; }
 khodahafezi  { yylval.n_sing = strdup(yytext); return N_SING; }
+khodahafez  { yylval.int = strdup(yytext); return INT; }
 khodahafez  { yylval.n_sing = strdup(yytext); return N_SING; }
 khodam  { yylval.pro = strdup(yytext); return PRO; }
 khodash  { yylval.pro = strdup(yytext); return PRO; }
@@ -626,6 +627,7 @@ nave  { yylval.n_sing = strdup(yytext); return N_SING; }
 nayamade  { yylval.v_pp = strdup(yytext); return V_PP; }
 nayoftade  { yylval.adj_ino = strdup(yytext); return ADJ_INO; }
 na  { yylval.adv_neg = strdup(yytext); return ADV_NEG; }
+na  { yylval.int = strdup(yytext); return INT; }
 na  { yylval.n_sing = strdup(yytext); return N_SING; }
 na  { yylval.num = strdup(yytext); return NUM; }
 nazariyyat  { yylval.n_pl = strdup(yytext); return N_PL; }
@@ -761,6 +763,7 @@ tahghighi  { yylval.n_sing = strdup(yytext); return N_SING; }
 tahghigh  { yylval.n_sing = strdup(yytext); return N_SING; }
 tahiyye  { yylval.n_sing = strdup(yytext); return N_SING; }
 tahlil  { yylval.n_sing = strdup(yytext); return N_SING; }
+['tahsil', 'aanha', 'nznd', 'sal', 'aavval', 'vav', 'dovvom', 'khoruj', 'aaz', 'daralhyat', 'mamnua', 'bud', 'vav', 'nghbanan', 'be', 'hich', 'mohassel', 'aejaze', 'birun', 'rftn', 'nmydadnd', 'vali', 'aaz', 'sal', 'sevvom', 'mhslyn', 'aejaze', 'dashtnd', 'kah', 'aaz', 'man', 'svdy', 'nasib', 'aanha', 'nkhvahd_shd', '.', 'man', 'dar', 'hame', 'aomr', 'khod', 'ra', 'dar', 'mohiti', 'kah', 'dar', 'aan', 'tokhm', 'bkarnd', 'aaya', 'bayad', 'mazraae', 'ra', 'movred', 'nekuhesh', 'gharar', 'dad', 'aalbatte', 'na', 'vav', 'banabarin', 'haghgh', 'ba', 'zan', 'aast', 'kah', 'ba', 'znha', 'vav', 'aagar', 'zan', 'man', 'porsid', 'koja', 'kah', 'nazd', 'mynvs', 'rftm', 'vav', 'chon', 'javan', 'gav', 'baz', 'nazd', 'ao', 'bud', 'nkhvastm', 'mozahem', 'shum', '.', 'bznm', 'bgvyyd', 'kah', 'man', 'baad', 'aaz', 'ain', 'gofte', 'hvrm', 'hb', 'tvry', 'aamniyyat', 'ra', 'hefz', 'kard', 'kah', 'yek', 'halghe', 'mes', 'aaz', 'jib', 'birun', 'aavard', 'kah', 'babat', 'haghgh', 'alalaj', 'bmn', 'bedahad', 'vav', 'bav', 'gftm', ':', 'mryt', 'man', 'nmydanm', 'ya', 'ain', 'movzua', 'baraye', 'ma', 'aahammiyyati', 'ndard', '.', 'digari', 'faryad', 'bar', 'aavard', 'ma', 'aaz', 'to', 'bardar', 'nashnavand', 'zira', 'chon', 'tvyk', 'khareji', 'hasti', 'khub', 'nist', 'kah', 'znhay', 'ma', 'ra', 'bardar', 'vav', 'aan', 'ghadr', 'aentezar', 'bksh', 'ta', 'mina', 'morajeaat', 'konad', '.', 'gftm', 'ykmrd', 'rastgu', 'gereftar', 'vaza', 'moshkel', 'myshvd', 'zira', 'aagar', 'rast', 'bgvyd', 'dygran', 'bavar', 'nmyknnd', 'vav', 'hamantor', 'kah', 'yek', 'temsah', 'vagheai', 'ba', 'yek', 'zarbat', 'shakh', 'khod', 'ra', 'vared', 'shekam', 'ain', 'bachche', 'krdyd', 'vav', 'bachche', 'kah', 'aanhame', 'shir', 'ra', 'tahammol', 'namayad', 'aanha', 'ra', 'bar', 'grda', 'nyd', '.', 'ainak', 'bmadrsh', 'bgv', 'hngamykh', 'pestan', 'dar', 'dahan', 'kudak', 'mygzard', 'motevajjeh', 'bashd', 'zira', 'momken', 'aast', 'kah', 'lebas', 'vav', 'zaban', 'vav', 'rosum', 'vav', 'moataghedat', 'mardom', 'aavaz', 'shavad', 'vali', 'hemaghat', 'aanha', 'aavaz', 'nkhvahd_shd', 'vav', 'drtmam', 'aasarmy', 'tavan', 'be', 'vasile', 'dorugh', 'mardom', 'ra', 'farift', '.', 'zira', 'hamantor', 'kah', 'magas', 'aasal', 'ra', 'dust', 'darad', 'mardom', 'ham', 'dorugh', 'vav', 'riya', 'vav', 'puch', 'ra', 'kah', 'hargez', 'aamali', 'nkhvahd_shd', 'dust', '.', 'aaya', 'kah', 'mardom', 'chegune', 'dar', 'myda', 'aatraf', 'naghghal', 'zhende', 'push', 'ra', 'kah', 'raviyy', 'khak', 'nashoste', 'vali', 'dam', 'aaz', 'zar', 'vav', 'seyyom', 'mara', 'kah', 'dar', 'ain', 'vagheae', 'shema', 'bghdr', 'man', 'ya', 'bish', 'aaz', 'man', 'daryd', 'chon', 'man', 'mardi', 'tabib', 'hstm', 'vav', 'kah', 'aynzn', 'divane', 'ramaaljh', 'konam', 'vav', 'ykmrtbh', 'dar', 'hozur', 'shema', 'kardsh', 'ra', 'grftm', '.', 'vali', 'nmydanm', 'vey', 'chegune', 'tvansth', 'baz', 'kardy', 'bedast', 'byavrd', 'vav', 'khod', 'ra', 'be', 'yek', 'tarf', 'brgrdanydh', 'aaz', 'gushe', 'dhansh', 'aab', 'ferro', 'myrykht', 'vav', 'maalum', 'mishod', 'kah', 'bimari', 'chashm', 'bayyen', 'aanha', 'yek', 'maraz', 'hamegani', 'aast', '.']
 tahsilati  { yylval.n_pl = strdup(yytext); return N_PL; }
 tahsil  { yylval.n_sing = strdup(yytext); return N_SING; }
 tahsin  { yylval.n_sing = strdup(yytext); return N_SING; }

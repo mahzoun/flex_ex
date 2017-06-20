@@ -18,5 +18,5 @@ for line in finglish_rules.readlines():
         if line.startswith(word):
             sss = line.split()
             #print ss 
-            print sss[0] + "\tstrcat(tkz_str, " + sss[len(sss)-1] + " );"
+            print sss[0] + "  {" + " yylval." + sss[len(sss)-1].lower() + " = strdup(yytext); return " +  sss[len(sss)-1] + "; }"
             # busidand	strcat(tkz_str, V_PA);
